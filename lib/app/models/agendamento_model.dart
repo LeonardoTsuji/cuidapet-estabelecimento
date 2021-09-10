@@ -1,3 +1,4 @@
+import 'package:cuidapet_estabelecimento/app/models/usuario_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:cuidapet_estabelecimento/app/models/fornecedor_model.dart';
@@ -13,6 +14,7 @@ class AgendamentoModel {
   String status;
   DateTime dataAgendamento;
   FornecedorModel fornecedor;
+  UsuarioModel? usuario;
   List<FornecedorServicoModel> servicos;
 
   AgendamentoModel({
@@ -23,6 +25,7 @@ class AgendamentoModel {
     required this.dataAgendamento,
     required this.fornecedor,
     required this.servicos,
+    this.usuario,
   });
 
   factory AgendamentoModel.fromJson(Map<String, dynamic> json) =>

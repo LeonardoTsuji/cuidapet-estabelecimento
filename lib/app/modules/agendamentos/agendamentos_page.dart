@@ -139,7 +139,7 @@ class AgendamentosPageState
                                       ElevatedButton.icon(
                                           onPressed: () =>
                                               controller.iniciarChatAgendamento(
-                                                  agendamento.id),
+                                                  agendamento),
                                           icon: Icon(Icons.chat),
                                           style: ElevatedButton.styleFrom(
                                             primary:

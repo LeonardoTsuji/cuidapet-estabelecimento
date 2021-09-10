@@ -8,7 +8,7 @@ import 'package:cuidapet_estabelecimento/app/modules/agendamentos/agendamentos_m
 import 'package:cuidapet_estabelecimento/app/repository/agendamento_repository.dart';
 import 'package:cuidapet_estabelecimento/app/repository/fornecedor_repository.dart';
 import 'package:cuidapet_estabelecimento/app/repository/usuario_repository.dart';
-import 'package:cuidapet_estabelecimento/app/services/agendamento_servico.dart';
+import 'package:cuidapet_estabelecimento/app/services/agendamento_service.dart';
 import 'package:cuidapet_estabelecimento/app/services/fornecedor_service.dart';
 import 'package:cuidapet_estabelecimento/app/services/usuario_services.dart';
 import 'package:cuidapet_estabelecimento/app/shared/auth_store.dart';

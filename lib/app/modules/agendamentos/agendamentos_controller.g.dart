@@ -38,9 +38,9 @@ mixin _$AgendamentosController on _AgendamentosControllerBase, Store {
       AsyncAction('_AgendamentosControllerBase.iniciarChatAgendamento');
 
   @override
-  Future<void> iniciarChatAgendamento(int idAgendamento) {
+  Future<void> iniciarChatAgendamento(AgendamentoModel agendamentoModel) {
     return _$iniciarChatAgendamentoAsyncAction
-        .run(() => super.iniciarChatAgendamento(idAgendamento));
+        .run(() => super.iniciarChatAgendamento(agendamentoModel));
   }
 
   final _$_AgendamentosControllerBaseActionController =

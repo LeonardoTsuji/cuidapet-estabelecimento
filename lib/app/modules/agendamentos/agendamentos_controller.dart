@@ -1,11 +1,7 @@
 import 'package:asuka/snackbars/asuka_snack_bar.dart';
 import 'package:cuidapet_estabelecimento/app/models/agendamento_model.dart';
-import 'package:cuidapet_estabelecimento/app/models/categorias_model.dart';
-import 'package:cuidapet_estabelecimento/app/models/chat_fornecedor_model.dart';
 import 'package:cuidapet_estabelecimento/app/models/chat_model.dart';
-import 'package:cuidapet_estabelecimento/app/models/fornecedor_model.dart';
-import 'package:cuidapet_estabelecimento/app/models/usuario_model.dart';
-import 'package:cuidapet_estabelecimento/app/services/agendamento_servico.dart';
+import 'package:cuidapet_estabelecimento/app/services/agendamento_service.dart';
 import 'package:cuidapet_estabelecimento/app/shared/components/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -59,22 +55,20 @@ abstract class _AgendamentosControllerBase with Store {
   }
 
   @action
-  Future<void> iniciarChatAgendamento(int idAgendamento) async {
+  Future<void> iniciarChatAgendamento(AgendamentoModel agendamentoModel) async {
     var loading;
     try {
       loading = LoadingIndicator.show();
-      // await _agendamentoService.iniciarChatAgendamento(idAgendamento);
-      Modular.to.pushNamed('/chat-lista/chat/',
-          arguments: new ChatModel(
-              id: 1,
-              usuario: 1,
-              nome: 'nome',
-              nomePet: 'nomePet',
-              fornecedor: FornecedorModel(
-                  id: 1,
-                  logo: '',
-                  nome: '',
-                  categoria: CategoriaModel(id: 1, nome: '', tipo: ''))));
+      var chatIniciado =
+          await _agendamentoService.iniciarChatAgendamento(agendamentoModel.id);
+      await Modular.to.pushNamed('/chat-lista/chat/',
+          arguments: ChatModel(
+            id: chatIniciado.id,
+            usuario: agendamentoModel.usuario?.id ?? 0,
+            nome: agendamentoModel.nome,
+            nomePet: agendamentoModel.nomePet,
+            fornecedor: agendamentoModel.fornecedor,
+          ));
       LoadingIndicator.hide(loading);
     } catch (e) {
       LoadingIndicator.hide(loading);

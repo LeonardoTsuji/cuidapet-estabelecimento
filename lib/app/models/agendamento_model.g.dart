@@ -18,6 +18,9 @@ AgendamentoModel _$AgendamentoModelFromJson(Map<String, dynamic> json) {
     servicos: (json['servicos'] as List<dynamic>)
         .map((e) => FornecedorServicoModel.fromJson(e as Map<String, dynamic>))
         .toList(),
+    usuario: json['usuario'] == null
+        ? null
+        : UsuarioModel.fromJson(json['usuario'] as Map<String, dynamic>),
   );
 }
 
@@ -29,5 +32,6 @@ Map<String, dynamic> _$AgendamentoModelToJson(AgendamentoModel instance) =>
       'status': instance.status,
       'dataAgendamento': instance.dataAgendamento.toIso8601String(),
       'fornecedor': instance.fornecedor,
+      'usuario': instance.usuario,
       'servicos': instance.servicos,
     };

@@ -1,4 +1,5 @@
 import 'package:cuidapet_estabelecimento/app/models/agendamento_model.dart';
+import 'package:cuidapet_estabelecimento/app/models/chat_iniciar_model.dart';
 import 'package:cuidapet_estabelecimento/app/repository/agendamento_repository.dart';
 
 class AgendamentoService {
@@ -15,7 +16,7 @@ class AgendamentoService {
     return _repository.buscarAgendamentos();
   }
 
-  Future<void> iniciarChatAgendamento(int idAgendamento) async {
-    await _repository.iniciarChatAgendamento(idAgendamento);
+  Future<ChatIniciarModel> iniciarChatAgendamento(int idAgendamento) async {
+    return await _repository.iniciarChatAgendamento(idAgendamento);
   }
 }

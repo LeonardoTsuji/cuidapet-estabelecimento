@@ -1,5 +1,6 @@
 import 'package:cuidapet_estabelecimento/app/core/dio/custom_dio.dart';
 import 'package:cuidapet_estabelecimento/app/models/agendamento_model.dart';
+import 'package:cuidapet_estabelecimento/app/models/chat_iniciar_model.dart';
 
 class AgendamentoRepository {
   Future<void> alterarStatusAgendamento(int idAgendamento, String status) {
@@ -15,8 +16,9 @@ class AgendamentoRepository {
             .toList());
   }
 
-  Future<void> iniciarChatAgendamento(int idAgendamento) {
+  Future<ChatIniciarModel> iniciarChatAgendamento(int idAgendamento) {
     return CustomDio.authInstance
-        .post('/agendamento/$idAgendamento/iniciar-chat');
+        .post('/agendamento/$idAgendamento/iniciar-chat')
+        .then((value) => ChatIniciarModel.fromJson(value.data));
   }
 }
